@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 def get_application():
@@ -19,5 +19,9 @@ app = get_application()
 @app.get("/")
 async def root():
     return {"message": "Ok!"}
+
+@app.get("/api/todo")
+async def get_todo():
+    return {"user": "lucas"}
 
 

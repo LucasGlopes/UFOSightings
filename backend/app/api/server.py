@@ -28,9 +28,12 @@ async def root():
 @app.get("/sightings")
 async def get_all_sightings():
 
-    sightings = pd.read_csv('./app/data/ufoData.csv', usecols=["latitude","longitude "], keep_default_na=False)
+    sightings = pd.read_csv('./app/data/ufoData.csv', usecols=["latitude","longitude "], keep_default_na=False).values.tolist()
 
-    return sightings.values.tolist()
+    def myfunc(sighting):
+        return [float(sighting[0]), sighting[1]]
+
+    return list(map(myfunc, sightings))
 
 # @app.post("/sighting")
 # async def get_sighting():

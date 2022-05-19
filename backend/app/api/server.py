@@ -1,5 +1,9 @@
+import re
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+import pandas as pd
+
 
 def get_application():
     app = FastAPI()
@@ -16,12 +20,20 @@ def get_application():
 
 app = get_application()
 
+
 @app.get("/")
 async def root():
-    return {"message": "Ok!"}
+    {"message": "Ok!"}
 
-@app.get("/api/todo")
-async def get_todo():
-    return {"user": "lucas"}
+@app.get("/sightings")
+async def get_all_sightings():
+
+    sightings = pd.read_csv('./app/data/ufoData.csv', usecols=["latitude","longitude "], keep_default_na=False)
+
+    return sightings.values.tolist()
+
+# @app.post("/sighting")
+# async def get_sighting():
+#     return 1
 
 

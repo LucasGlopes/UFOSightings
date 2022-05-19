@@ -33,12 +33,21 @@ async def get_all_sightings():
     def myfunc(sighting):
         return [float(sighting[0]), sighting[1]]
 
-    return list(map(myfunc, sightings))
+    sightings = list(map(myfunc, sightings))
+
+    if sightings:
+        return sightings
+    raise HTTPException(404, "Something went wrong!")
+
 
 @app.get("/sightings{position}")
 async def get_sighting(position):
     sightings = pd.read_csv('./app/data/ufoData.csv', keep_default_na=False).values.tolist()
 
-    return sightings[int(position)]
+    sighting = sightings[int(position)]
+
+    if sighting:
+        return sighting
+    raise HTTPException(404, "Something went wrong!")
 
 

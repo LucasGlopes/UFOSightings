@@ -23,7 +23,7 @@ app = get_application()
 
 @app.get("/")
 async def root():
-    {"message": "Ok!"}
+    return {"message": "Ok!"}
 
 @app.get("/sightings")
 async def get_all_sightings():
@@ -35,8 +35,10 @@ async def get_all_sightings():
 
     return list(map(myfunc, sightings))
 
-# @app.post("/sighting")
-# async def get_sighting():
-#     return 1
+@app.get("/sightings{position}")
+async def get_sighting(position):
+    sightings = pd.read_csv('./app/data/ufoData.csv', keep_default_na=False).values.tolist()
+
+    return sightings[int(position)]
 
 

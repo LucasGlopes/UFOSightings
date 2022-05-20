@@ -1,6 +1,7 @@
-import re
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.utils import sighting_to_dict
 
 import pandas as pd
 
@@ -30,10 +31,10 @@ async def get_all_sightings():
 
     sightings = pd.read_csv('./app/data/ufoData.csv', usecols=["latitude","longitude "], keep_default_na=False).values.tolist()
 
-    def myfunc(sighting):
-        return [float(sighting[0]), sighting[1]]
+    # def myfunc(sighting):
+    #     return [float(sighting[0]), sighting[1]]
 
-    sightings = list(map(myfunc, sightings))
+    # sightings = list(map(myfunc, sightings))
 
     if sightings:
         return sightings
@@ -47,7 +48,7 @@ async def get_sighting(position):
     sighting = sightings[int(position)]
 
     if sighting:
-        return sighting
+        return sighting_to_dict(sighting)
     raise HTTPException(404, "Something went wrong!")
 
 

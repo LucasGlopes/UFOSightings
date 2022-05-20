@@ -1,23 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
-import api from "../../services/api";
 
-const Map: React.FC = () => {
-    const [sightings, setSightings] = useState([]);
+interface MapProps {
+    sightings: Array<Array<number>>;
+    showSighting: (index: number) => void;
+}
 
-    useEffect(() => {
-        getSightings();
-    }, []);
-
-    const getSightings = async () => {
-        const { data } = await api.get("/sightings");
-        setSightings(data);
-    }
-
-    const showSighting = async (index: number) =>{
-        const { data } = await api.get(`/sightings${index}`);
-        console.log(data);
-    }
+const Map: React.FC<MapProps> = (props) => {
+    const { sightings, showSighting } = props;
 
     return (
         <MapContainer center={[29.8830556,-97.9411111]} zoom={4} scrollWheelZoom={true}>

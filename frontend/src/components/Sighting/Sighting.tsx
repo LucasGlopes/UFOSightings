@@ -6,34 +6,32 @@ import Grid from '@mui/material/Grid';
 import { SightingProps } from "../../interfaces";
 
 interface SightingDataProps {
-    sightingData: SightingProps|undefined;
+  sightingData: SightingProps|undefined;
 }
 
 const Sighting: React.FC<SightingDataProps> = (props) => {
-    const { sightingData } = props;
+  const { sightingData } = props;
 
-    const teste = () => {
-        console.log(sightingData)
-    }
-
-    return (
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-around"
-          alignItems="center"
-          sx={{height: "30vh" }}
-        >
-            <Button
-              variant="contained"
-              sx={{ marginTop: "10px", width: "80%", height: "20%" }}
-              onClick={teste}
-            >
-              Encontrar Menor Caminho
-            </Button>
-            {/* <div>{sightingData.city}</div> */}
-        </Grid>
-    )
+  return (
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-around"
+        alignItems="center"
+        sx={{height: "30vh" }}
+      >
+          <div>{sightingData?.city}</div>
+          <div>{sightingData?.state}</div>
+          <div>{sightingData?.country}</div>
+          <div>{sightingData?.datePosted}</div>
+          <div>{sightingData?.datetime}</div>
+          <div>{sightingData?.durationHoursMin}</div>
+          <div>{sightingData?.shape}</div>
+          <div>{sightingData?.latitude}</div>
+          <div>{sightingData?.longitude}</div>
+          <div>{sightingData?.comments}</div>
+      </Grid>
+  )
 }
 
 export default Sighting;

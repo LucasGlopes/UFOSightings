@@ -2,7 +2,6 @@ FROM python:3.8-slim-buster
 WORKDIR /backend
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
-ENV PYTHONPATH="${PYTHONPATH}:/backend/"
 # install system dependencies
 RUN apt-get update \
   && apt-get -y install gcc \

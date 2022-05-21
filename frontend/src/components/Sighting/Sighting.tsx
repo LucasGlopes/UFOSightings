@@ -15,21 +15,42 @@ const Sighting: React.FC<SightingDataProps> = (props) => {
         container
         direction="column"
         justifyContent="space-around"
-        alignItems="center"
+        alignItems="flex-start"
         sx={{
-          height: "70vh",
+          height: "60vh",
           width: '90%',
-          // backgroundColor: 'blue'
+          backgroundColor: 'blue'
         }}
       >
-        <SightingInfo title="City" info={sightingData?.city}/>
-        <SightingInfo title="State" info={sightingData?.state}/>
-        <SightingInfo title="Country" info={sightingData?.country}/>
+        <SightingInfo title="City" info={sightingData?.city.toUpperCase()}/>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <SightingInfo title="State" info={sightingData?.state.toUpperCase()}/>
+          <SightingInfo title="Country" info={sightingData?.country.toUpperCase()}/>
+        </Grid>
         <SightingInfo title="Date/Time" info={sightingData?.datetime}/>
-        <SightingInfo title="Latitude" info={sightingData?.latitude}/>
-        <SightingInfo title="Longitude" info={sightingData?.longitude}/>
-        <SightingInfo title="Duration" info={sightingData?.durationHoursMin}/>
-        <SightingInfo title="Shape" info={sightingData?.shape}/>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <SightingInfo title="Latitude" info={sightingData?.latitude}/>
+          <SightingInfo title="Longitude" info={sightingData?.longitude}/>
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <SightingInfo title="Duration" info={sightingData?.durationHoursMin}/>
+          <SightingInfo title="Shape" info={sightingData?.shape}/>
+        </Grid>
         <SightingInfo title="Comments" info={sightingData?.comments}/>
       </Grid>
   )

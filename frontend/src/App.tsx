@@ -35,11 +35,12 @@ function App() {
           <Grid 
             container 
             direction="column"
-            justifyContent="space-around"
+            justifyContent="flex-start"
             alignItems="center"
             sx={{ 
               height: "100%",
-              width: "100%"
+              width: "100%",
+              // backgroundColor: '#4F8A39',
           }}>
             <Header />
             <Sighting sightingData={sightingData}/>

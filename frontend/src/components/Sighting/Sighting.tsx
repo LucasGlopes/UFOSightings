@@ -16,7 +16,11 @@ const Sighting: React.FC<SightingDataProps> = (props) => {
         direction="column"
         justifyContent="space-around"
         alignItems="center"
-        sx={{height: "70vh" }}
+        sx={{
+          height: "70vh",
+          width: '90%',
+          // backgroundColor: 'blue'
+        }}
       >
         <SightingInfo title="City" info={sightingData?.city}/>
         <SightingInfo title="State" info={sightingData?.state}/>

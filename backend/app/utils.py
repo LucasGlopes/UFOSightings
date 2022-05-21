@@ -5,6 +5,9 @@ def sighting_to_dict(sighting):
     sighting_dict = {}
 
     for i in range(0, len(columns)):
-        sighting_dict[columns[i]] = sighting[i]
+        if isinstance(sighting[i], str):
+            sighting_dict[columns[i]] = sighting[i].replace('&#44', ',')
+        else:
+            sighting_dict[columns[i]] = sighting[i]
 
     return sighting_dict

@@ -13,15 +13,17 @@ const Header: React.FC = () => {
             sx={{
                 marginTop: 1.5,
                 marginBottom: 2,
-                // backgroundColor: '#4F8A39'
+                // backgroundColor: '#4F8A39',
+                width: '90%'
             }}
         >
             <img
                 src={alien}
                 alt="Alien inside spaceship"
-                style={{width: "30%", height: "30%"}} 
+                style={{width: "30%", height: "80%"}}
+                
             />
-            <h1 style={{ fontFamily: 'Orbitron' }}>UFO Sightings</h1>
+            <h1 style={{ fontFamily: 'Orbitron', paddingRight:'5px' }}>UFO Sightings</h1>
         </Grid>
     )
 }

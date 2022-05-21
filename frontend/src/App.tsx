@@ -32,8 +32,18 @@ function App() {
         <Grid 
           item xs={3}
         >
-          <Header />
-          <Sighting sightingData={sightingData}/>
+          <Grid 
+            container 
+            direction="column"
+            justifyContent="space-around"
+            alignItems="center"
+            sx={{ 
+              height: "100%",
+              width: "100%"
+          }}>
+            <Header />
+            <Sighting sightingData={sightingData}/>
+          </Grid>
         </Grid>
         <Grid item xs={9}>
           <Map sightings={sightings} showSighting={showSighting}/>

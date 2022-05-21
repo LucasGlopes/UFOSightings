@@ -3,9 +3,9 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Map from './components/Map/Map';
 import Sighting from "./components/Sighting/Sighting";
+import Header from "./components/Header/Header";
 import api from "./services/api";
 import { SightingProps } from "./interfaces";
-
 
 function App() {
   const [sightings, setSightings] = useState([]);
@@ -32,6 +32,7 @@ function App() {
         <Grid 
           item xs={3}
         >
+          <Header />
           <Sighting sightingData={sightingData}/>
         </Grid>
         <Grid item xs={9}>

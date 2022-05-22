@@ -19,7 +19,10 @@ const Sighting: React.FC<SightingDataProps> = (props) => {
         sx={{
           height: "60vh",
           width: '90%',
-          backgroundColor: 'blue'
+          backgroundColor: '#4F8A39',
+          border: 6,
+          borderRadius: 7,
+          padding: 2
         }}
       >
         <SightingInfo title="City" info={sightingData?.city.toUpperCase()}/>

@@ -14,7 +14,9 @@ const Header: React.FC = () => {
                 marginTop: 1.5,
                 marginBottom: 2,
                 backgroundColor: '#4F8A39',
-                width: '90%'
+                width: '90%',
+                border: 6,
+                borderRadius: 7
             }}
         >
             <img

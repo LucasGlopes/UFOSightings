@@ -9,9 +9,11 @@ const SightingInfo: React.FC<SightingInfoProps> = (props) => {
     const { title, info } = props;
 
     return (
-        <fieldset>
-            <legend>{title}</legend> 
-            <div>{info}</div>
+        <fieldset
+            style={{borderWidth:'3px', borderColor: 'black', borderRadius: 8 }}
+        >
+            <legend style={{ fontFamily: 'Orbitron' }}>{title}</legend> 
+            <div style={{ fontFamily: 'Roboto', fontWeight: '450' }}>{info}</div>
       </fieldset>
     )
 }

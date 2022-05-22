@@ -10,6 +10,7 @@ import { SightingProps } from "./interfaces";
 function App() {
   const [sightings, setSightings] = useState([]);
   const [sightingData, setSightingData] = useState<SightingProps|undefined>();
+  const [isMarkerClicked, setIsMarkerClicker] = useState(false);
 
   useEffect(() => {
     getSightings();
@@ -23,14 +24,16 @@ function App() {
   const showSighting = async (index: number) =>{
     const { data } = await api.get(`/sightings${index}`);
     setSightingData(data);
+    setIsMarkerClicker(true);
   }
 
 
   return (
     <Box sx={{ width: "100vw", height: "100vh" }}>
-      <Grid container sx={{ height: "100%" }}>
+      <Grid container sx={{ height: "100%"}}>
         <Grid 
           item xs={3}
+          sx={{ border: 5}}
         >
           <Grid 
             container 
@@ -40,13 +43,17 @@ function App() {
             sx={{ 
               height: "100%",
               width: "100%",
-              // backgroundColor: '#4F8A39',
+              // backgroundColor: '#031202',
+              backgroundColor: '#4F8A39',
           }}>
             <Header />
-            <Sighting sightingData={sightingData}/>
+            {isMarkerClicked ? <Sighting sightingData={sightingData}/> : <div>oi</div>}
           </Grid>
         </Grid>
-        <Grid item xs={9}>
+        <Grid 
+          item xs={9} 
+          sx={{ border: 5, borderLeft: 0}}
+        >
           <Map sightings={sightings} showSighting={showSighting}/>
         </Grid>
       </Grid>

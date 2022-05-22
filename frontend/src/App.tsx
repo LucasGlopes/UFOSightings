@@ -6,6 +6,7 @@ import Sighting from "./components/Sighting/Sighting";
 import Header from "./components/Header/Header";
 import api from "./services/api";
 import { SightingProps } from "./interfaces";
+import Swal from "sweetalert2";
 
 function App() {
   const [sightings, setSightings] = useState([]);
@@ -17,14 +18,33 @@ function App() {
   }, []);
 
   const getSightings = async () => {
-    const { data } = await api.get("/sightings");
-    setSightings(data);
+    try{
+      const { data } = await api.get("/sightings");
+      setSightings(data);
+    }
+    catch{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        showCloseButton: true,
+      })
+    }
   }
 
   const showSighting = async (index: number) =>{
-    const { data } = await api.get(`/sightings${index}`);
-    setSightingData(data);
-    setIsMarkerClicker(true);
+    try{
+      const { data } = await api.get(`/sightings${index}`);
+      setSightingData(data);
+      setIsMarkerClicker(true);
+    } catch{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        showCloseButton: true,
+      })
+    }
   }
 
 

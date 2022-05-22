@@ -1,7 +1,7 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, CircleMarker} from 'react-leaflet';
 import * as L from "leaflet";
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 
 interface MapProps {
@@ -18,12 +18,15 @@ const Map: React.FC<MapProps> = (props) => {
     })
 
     return (
-        <MapContainer center={[41.6916667,-97.4841667]} zoom={4.7} scrollWheelZoom={true}>
+        <MapContainer center={[41.6916667,-97.4841667]} zoom={4.0}  scrollWheelZoom={true}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-                {sightings.map((sighting, index) => (
+            <MarkerClusterGroup
+                chunkedLoading
+            >
+                {/* {sightings.map((sighting, index) => (
                     <Marker
                         key={index}
                         position={[
@@ -34,13 +37,25 @@ const Map: React.FC<MapProps> = (props) => {
                         // icon={iconPerson}
                     >
                     </Marker>
+                ))} */}
+
+                {sightings.map((sighting, index) => (
+                    <CircleMarker
+                        key={index}
+                        center={[
+                            sighting[0],
+                            sighting[1]
+                        ]}
+                        radius={7}
+                        color="blue"
+                        eventHandlers={{click: () => showSighting(index)}}
+                        // icon={iconPerson}
+                    >
+                    </CircleMarker>
                 ))}
 
-            {/* <MarkerClusterGroup>
-                <Marker position={[49.8397, 24.0297]} />
-                <Marker position={[52.2297, 21.0122]} />
-                <Marker position={[51.5074, -0.0901]} />
-            </MarkerClusterGroup>; */}
+            </MarkerClusterGroup>
+
 
         </MapContainer>
     )

@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import api from "./services/api";
 import { SightingProps } from "./interfaces";
 import Swal from "sweetalert2";
+import alienHead from './imgs/alienHead.svg'
 
 function App() {
   const [sightings, setSightings] = useState([]);
@@ -63,11 +64,18 @@ function App() {
             sx={{ 
               height: "100%",
               width: "100%",
-              // backgroundColor: '#031202',
               backgroundColor: '#4F8A39',
           }}>
             <Header />
-            {isMarkerClicked ? <Sighting sightingData={sightingData}/> : <div>oi</div>}
+            {isMarkerClicked ? 
+              <Sighting sightingData={sightingData}/> :  
+              <img
+                src={alienHead}
+                alt="Alien"
+                style={{width: "40%", height: "40%"}}
+                
+            />
+            }
           </Grid>
         </Grid>
         <Grid 

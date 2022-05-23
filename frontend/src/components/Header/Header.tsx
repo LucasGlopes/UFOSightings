@@ -12,7 +12,7 @@ const Header: React.FC = () => {
             alignItems="center"
             sx={{
                 marginTop: 1.5,
-                marginBottom: 2,
+                marginBottom: 10,
                 backgroundColor: '#4F8A39',
                 width: '90%',
                 border: 6,

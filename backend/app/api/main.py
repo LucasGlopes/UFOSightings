@@ -28,7 +28,7 @@ app = get_application()
 
 @app.get("/")
 async def root():
-    return {"message": "Ok!"}
+    return {"Message": "Ok!"}
 
 @app.get("/sightings")
 async def get_all_sightings():

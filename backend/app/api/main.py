@@ -5,11 +5,6 @@ from app.utils import sighting_to_dict
 
 import pandas as pd
 
-origins = [
-    "http://localhost:3000",
-]
-
-
 def get_application():
     app = FastAPI()
 
